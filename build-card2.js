@@ -5,18 +5,11 @@ let h = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8');
 const must = (from, to, label) => { if (!h.includes(from)) throw new Error('missing: ' + (label || from.slice(0, 60))); h = h.replace(from, to); };
 const cut = (re, label) => { if (!re.test(h)) throw new Error('missing: ' + label); h = h.replace(re, ''); };
 
-cut(/\s*<!-- ================= 5\. DAY 1 ================= -->[\s\S]*?(?=\s*<!-- ================= 6\. DAY 2)/, 'day1 section');
 cut(/\s*<!-- ================= 8\. RSVP ================= -->[\s\S]*?<\/section>/, 'rsvp section');
 cut(/\s*<div class="card">\s*<span class="idx">03<\/span>[\s\S]*?<h3>Sufi Night<\/h3>[\s\S]*?<\/div>\s*<\/div>/, 'sufi card');
 
-must('<meta name="description" content="Wedding of Vivek Karicheti with Bhavini Kapur · 25 & 26 December 2026 · Maira Resort, Raipur">',
-     '<meta name="description" content="Wedding of Vivek Karicheti with Bhavini Kapur · 26 December 2026 · Maira Resort, Raipur">');
-must('<div class="datecode">25 · 26 . 12 . 26</div>', '<div class="datecode">26 . 12 . 2026</div>');
 h = h.replace(/Haldi · Mehendi · Baraat · Sangeet · Muhurtham · Bhojnam · Sufi Night ·/g, 'Muhurtham · Bhojnam · Vivek &amp; Bhavini ·');
-must('<div class="eyebrow rise">Venue · Both days</div>', '<div class="eyebrow rise">Venue</div>');
-must("      'BEGIN:VEVENT','UID:vb-day1@wedding','DTSTART;VALUE=DATE:20261225','DTEND;VALUE=DATE:20261226',\n      'SUMMARY:Vivek & Bhavini · Haldi, Mehendi, Baraat & Sangeet','LOCATION:Maira Resort & Convention Center, Raipur, Chhattisgarh','END:VEVENT',\n", '', 'ics day1');
 must("'SUMMARY:Vivek & Bhavini · Muhurtham, Bhojnam & Sufi Night'", "'SUMMARY:Vivek & Bhavini · Muhurtham & Bhojnam'");
-must("    25 · 26 December 2026 · Raipur", "    26 December 2026 · Raipur");
 must('    <div class="spacer"></div>', '    <div class="spacer" style="height:6svh"></div>');
 
 fs.mkdirSync(path.join(__dirname, 'wedding'), { recursive: true });
