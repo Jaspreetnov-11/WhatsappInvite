@@ -106,15 +106,15 @@
   #card{background:var(--ivory);height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding:0 28px}
   #card .ganesh{width:min(54vw,225px);display:block;margin:0 auto;filter:drop-shadow(0 10px 18px rgba(120,90,30,.28))}
   #card .wi.big{margin:10px 0 4px}
-  #card .mono.big{width:250px;height:220px}
-  #card .mono.big .v,#card .mono.big .b{font-size:150px}
-  #card .mono.big .v{transform:translate(12px,-30px)}
-  #card .mono.big .b{transform:translate(-6px,30px)}
-  #card .mono.big .amp{font-size:40px}
-  #card .mono.big .swash{height:36px}
-  #card .halo{position:absolute;left:50%;top:50%;width:80%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(233,214,168,.8) 0%,rgba(233,214,168,.3) 45%,rgba(233,214,168,0) 70%);pointer-events:none}
+  #card .mono.big{width:150px;height:118px}
+  #card .mono.big .v,#card .mono.big .b{font-size:85px}
+  #card .mono.big .v{transform:translate(8px,-16px)}
+  #card .mono.big .b{transform:translate(-4px,16px)}
+  #card .mono.big .amp{font-size:24px}
+  #card .mono.big .swash{height:20px;bottom:2px}
+  #card .halo{position:absolute;left:50%;top:50%;width:62%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(233,214,168,.8) 0%,rgba(233,214,168,.3) 45%,rgba(233,214,168,0) 70%);pointer-events:none}
   #card .shloka{font-size:13px;letter-spacing:.1em;color:var(--ink-soft);margin-bottom:8px}
-  #card .datecode{font-family:var(--sans);font-weight:400;font-size:16px;letter-spacing:.5em;color:var(--ink);margin-top:26px;padding-left:.5em}
+  #card .datecode{font-family:var(--sans);font-weight:400;font-size:15px;letter-spacing:.5em;color:var(--ink);margin-top:18px;padding-left:.5em}
 
   /* =========================================================
      3. NAMES
@@ -613,7 +613,7 @@
   if (reduce) { document.querySelectorAll('.rise').forEach(el => { el.style.opacity = 1; el.style.transform = 'none'; }); return; }
 
   /* ---------- 1. envelope opens on scroll ---------- */
-  const open = gsap.timeline({ scrollTrigger: { trigger: '#open', start: 'top top', end: '+=220%', scrub: .6, pin: true, anticipatePin: 1 } });
+  const open = gsap.timeline({ scrollTrigger: { trigger: '#open', start: 'top top', end: '+=130%', scrub: .6, pin: true, anticipatePin: 1 } });
   open
     .to('#hint', { opacity: 0, duration: .05 }, 0)
     .to('#seal', { scale: .15, opacity: 0, rotate: 40, y: -30, duration: .16, ease: 'power2.in' }, 0)
@@ -625,10 +625,10 @@
     .to('#open .card', { scale: 1.32, y: '0%', duration: .25, ease: 'power2.out' }, .64)
     .to('#open .env', { boxShadow: 'none', duration: .1 }, .64)
     .to('#open', { backgroundColor: '#f4ead8', duration: .25 }, .7)
-    .to('#open .env', { opacity: 0, duration: .08 }, .94);
+    .to('#open .env', { opacity: 0, duration: .08 }, .92);
 
   /* ---------- 2. card: ganesha draws, monogram lands ---------- */
-  const card = gsap.timeline({ scrollTrigger: { trigger: '#card', start: 'top top', end: '+=120%', scrub: .6, pin: true, anticipatePin: 1 } });
+  const card = gsap.timeline({ scrollTrigger: { trigger: '#card', start: 'top top', end: '+=45%', scrub: .6, pin: true, anticipatePin: 1 } });
   card
     .from('#card .halo', { scale: .4, opacity: 0, duration: .4, ease: 'power2.out' }, 0)
     .from('#cardMono .v', { x: -80, opacity: 0, duration: .25, ease: 'power3.out' }, .5)
