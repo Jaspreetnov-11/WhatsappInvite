@@ -81,7 +81,8 @@
   .flap.l{clip-path:polygon(0 0,50% 50%,0 100%);transform-origin:0 50%;z-index:3}
   .flap.r{clip-path:polygon(100% 0,50% 50%,100% 100%);transform-origin:100% 50%;z-index:3}
   .flap .edge{position:absolute;inset:0;pointer-events:none}
-  #seal{position:absolute;left:50%;top:50%;width:30%;transform:translate(-50%,-50%);z-index:6;filter:drop-shadow(0 8px 12px rgba(70,50,15,.4))}
+  .front-art{position:absolute;left:50%;top:50%;width:66%;transform:translate(-50%,-50%);z-index:6;filter:drop-shadow(0 8px 14px rgba(70,50,15,.35))}
+  #open .card .names-line{font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-deep);margin-top:2px}
   #hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px}
   #hint .line{width:1px;height:38px;background:linear-gradient(var(--gold),transparent);animation:drip 1.8s ease-in-out infinite}
   @keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
@@ -417,25 +418,15 @@
     <div class="env">
       <div class="back"></div>
       <div class="card">
-        <svg class="ganesh" viewBox="105 80 870 890"><use href="#ganeshArt"/></svg>
+        <div class="mono"><span class="v">V</span><span class="amp">&amp;</span><span class="b">B</span><svg class="swash" viewBox="0 0 150 24" preserveAspectRatio="none"><use href="#swash"/></svg></div>
+        <div class="names-line">Vivek &amp; Bhavini</div>
       </div>
 
       <div class="flap l"><svg viewBox="0 0 300 400" preserveAspectRatio="none" filter="url(#embossI)"><use href="#sprig" x="10" y="120" width="60" height="120"/><use href="#sprig" x="40" y="230" width="50" height="100" transform="rotate(-20 65 280)"/><use href="#sprig" x="18" y="10" width="50" height="100" transform="rotate(15 43 60)"/></svg><svg class="edge" viewBox="0 0 300 400" preserveAspectRatio="none" fill="none" stroke="#c9ad6a" stroke-width="1.2"><path d="M0 0 L150 200 L0 400"/></svg></div>
       <div class="flap r"><svg viewBox="0 0 300 400" preserveAspectRatio="none" filter="url(#embossI)"><use href="#sprig" x="230" y="120" width="60" height="120"/><use href="#sprig" x="210" y="230" width="50" height="100" transform="rotate(20 235 280)"/><use href="#sprig" x="232" y="10" width="50" height="100" transform="rotate(-15 257 60)"/></svg><svg class="edge" viewBox="0 0 300 400" preserveAspectRatio="none" fill="none" stroke="#c9ad6a" stroke-width="1.2"><path d="M300 0 L150 200 L300 400"/></svg></div>
       <div class="flap b"><svg viewBox="0 0 300 400" preserveAspectRatio="none" filter="url(#embossI)"><use href="#sprig" x="120" y="270" width="60" height="120"/><use href="#sprig" x="40" y="300" width="50" height="100" transform="rotate(30 65 350)"/><use href="#sprig" x="210" y="300" width="50" height="100" transform="rotate(-30 235 350)"/><use href="#vine" x="0" y="270" width="130" height="130" transform="scale(1 -1) translate(0 -800)"/><use href="#vine" x="170" y="270" width="130" height="130" transform="scale(-1 -1) translate(-470 -800)"/></svg><svg class="edge" viewBox="0 0 300 400" preserveAspectRatio="none" fill="none" stroke="#c9ad6a" stroke-width="1.2"><path d="M0 400 L150 192 L300 400"/></svg></div>
       <div class="flap t"><svg viewBox="0 0 300 400" preserveAspectRatio="none" filter="url(#embossI)"><use href="#sprig" x="120" y="16" width="60" height="120"/><use href="#sprig" x="40" y="0" width="50" height="100" transform="rotate(-25 65 50)"/><use href="#sprig" x="210" y="0" width="50" height="100" transform="rotate(25 235 50)"/><use href="#vine" x="0" y="0" width="130" height="130"/><use href="#vine" x="170" y="0" width="130" height="130" transform="scale(-1 1) translate(-470 0)"/></svg><svg class="edge" viewBox="0 0 300 400" preserveAspectRatio="none" fill="none" stroke="#c9ad6a" stroke-width="1.2"><path d="M0 0 L150 208 L300 0"/></svg></div>
-
-      <svg id="seal" viewBox="0 0 120 120">
-        <circle cx="60" cy="60" r="50" fill="url(#waxG)" filter="url(#wax)"/>
-        <circle cx="60" cy="60" r="41" fill="none" stroke="#f1dc9c" stroke-width=".9" opacity=".8"/>
-        <circle cx="60" cy="60" r="38" fill="#d9bd6c" opacity=".55"/>
-        <path id="sealArc" d="M24 60 A36 36 0 0 1 96 60" fill="none"/>
-        <text font-family="Jost" font-size="6" letter-spacing="1.6" fill="#7a5c1c"><textPath href="#sealArc" startOffset="50%" text-anchor="middle">VIVEK &amp; BHAVINI</textPath></text>
-        <text x="47" y="77" font-family="Cormorant Garamond" font-style="italic" font-weight="300" font-size="40" fill="#7a5c1c" text-anchor="middle">V</text>
-        <text x="60" y="80" font-family="Pinyon Script" font-size="20" fill="#8f6f27" text-anchor="middle">&amp;</text>
-        <text x="75" y="77" font-family="Cormorant Garamond" font-style="italic" font-weight="300" font-size="40" fill="#7a5c1c" text-anchor="middle">B</text>
-        <path d="M32 84 C40 90 80 90 88 84" fill="none" stroke="#8f6f27" stroke-width=".9"/>
-      </svg>
+      <svg class="front-art" viewBox="105 80 870 890"><use href="#ganeshArt"/></svg>
     </div>
     <div id="hint"><span class="eyebrow" style="font-size:9px">Scroll to open</span><span class="line"></span></div>
   </section>
@@ -695,7 +686,7 @@
   const open = gsap.timeline({ scrollTrigger: { trigger: '#open', start: 'top top', end: '+=220%', scrub: .6, pin: true, anticipatePin: 1 } });
   open
     .to('#hint', { opacity: 0, duration: .05 }, 0)
-    .to('#seal', { scale: .15, opacity: 0, rotate: 40, y: -30, duration: .16, ease: 'power2.in' }, 0)
+    .to('.front-art', { scale: .5, opacity: 0, y: -60, duration: .16, ease: 'power2.in' }, 0)
     .to('.flap.t', { rotateX: 178, duration: .24, ease: 'power2.inOut' }, .12)
     .to('.flap.l', { rotateY: -178, duration: .22, ease: 'power2.inOut' }, .26)
     .to('.flap.r', { rotateY: 178, duration: .22, ease: 'power2.inOut' }, .26)
