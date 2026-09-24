@@ -20,7 +20,7 @@ must('<div class="eyebrow rise">Venue · Both days</div>', '<div class="eyebrow 
 must("      'BEGIN:VEVENT','UID:vb-day1@wedding','DTSTART;VALUE=DATE:20261225','DTEND;VALUE=DATE:20261226',\n      'SUMMARY:Vivek & Bhavini · Haldi, Mehendi, Baraat & Sangeet','LOCATION:Maira Resort & Convention Center, Raipur, Chhattisgarh','END:VEVENT',\n", '', 'ics day1');
 must("'SUMMARY:Vivek & Bhavini · Muhurtham, Bhojnam & Sufi Night'", "'SUMMARY:Vivek & Bhavini · Muhurtham & Bhojnam'");
 must("    25 · 26 December 2026 · Raipur", "    26 December 2026 · Raipur");
-must('    <div class="spacer"></div>', '    <div class="spacer" style="height:12svh"></div>');
+must('    <div class="spacer"></div>', '    <div class="spacer" style="height:6svh"></div>');
 
 fs.mkdirSync(path.join(__dirname, 'wedding'), { recursive: true });
 fs.writeFileSync(path.join(__dirname, 'wedding', 'index.html'), h);
