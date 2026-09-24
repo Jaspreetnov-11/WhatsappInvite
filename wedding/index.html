@@ -472,7 +472,7 @@
     <div class="word b">the</div>
     <div class="word c">Date</div>
     <div class="orn"><svg viewBox="0 0 60 24"><use href="#orn"/></svg></div>
-    <div class="dates"><span class="m">December</span><span class="n" id="n26">26</span><span class="y">2026</span></div>
+    <div class="dates"><span class="m">December</span><span class="n" id="n24">25</span><span class="amp">&amp;</span><span class="n" id="n26">26</span><span class="y">2026</span></div>
     <div class="where">Maira Resort &amp; Convention Center<br>Raipur, Chhattisgarh</div>
     <div class="orn end"><svg viewBox="0 0 60 24"><use href="#orn"/></svg></div>
   </section>
@@ -646,7 +646,9 @@
     .from('#std .word.b', { opacity: 0, duration: .2 }, .12)
     .from('#std .word.c', { yPercent: -80, opacity: 0, letterSpacing: '.5em', duration: .3, ease: 'power3.out' }, .08)
     .from('#std .orn', { scaleX: 0, duration: .2 }, .3)
+    .from('#n24', { xPercent: -120, opacity: 0, duration: .3, ease: 'power3.out' }, .36)
     .from('#n26', { xPercent: 120, opacity: 0, duration: .3, ease: 'power3.out' }, .36)
+    .from('#std .dates .amp', { scale: 0, duration: .15, ease: 'back.out(2)' }, .5)
     .from('#std .dates .m, #std .dates .y, #std .where', { opacity: 0, y: 10, stagger: .05, duration: .2 }, .52)
     .from('#std .orn.end', { scaleX: 0, opacity: 0, duration: .25 }, .62);
 

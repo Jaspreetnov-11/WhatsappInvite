@@ -12,10 +12,7 @@ cut(/\s*<div class="card">\s*<span class="idx">03<\/span>[\s\S]*?<h3>Sufi Night<
 must('<meta name="description" content="Wedding of Vivek Karicheti with Bhavini Kapur · 25 & 26 December 2026 · Maira Resort, Raipur">',
      '<meta name="description" content="Wedding of Vivek Karicheti with Bhavini Kapur · 26 December 2026 · Maira Resort, Raipur">');
 must('<div class="datecode">25 · 26 . 12 . 26</div>', '<div class="datecode">26 . 12 . 2026</div>');
-must('<span class="n" id="n24">25</span><span class="amp">&amp;</span><span class="n" id="n26">26</span>', '<span class="n" id="n26">26</span>');
 h = h.replace(/Haldi · Mehendi · Baraat · Sangeet · Muhurtham · Bhojnam · Sufi Night ·/g, 'Muhurtham · Bhojnam · Vivek &amp; Bhavini ·');
-must("    .from('#n24', { xPercent: -120, opacity: 0, duration: .3, ease: 'power3.out' }, .36)\n", '', 'n24 tween');
-must("    .from('#std .dates .amp', { scale: 0, duration: .15, ease: 'back.out(2)' }, .5)\n", '', 'amp tween');
 must('<div class="eyebrow rise">Venue · Both days</div>', '<div class="eyebrow rise">Venue</div>');
 must("      'BEGIN:VEVENT','UID:vb-day1@wedding','DTSTART;VALUE=DATE:20261225','DTEND;VALUE=DATE:20261226',\n      'SUMMARY:Vivek & Bhavini · Haldi, Mehendi, Baraat & Sangeet','LOCATION:Maira Resort & Convention Center, Raipur, Chhattisgarh','END:VEVENT',\n", '', 'ics day1');
 must("'SUMMARY:Vivek & Bhavini · Muhurtham, Bhojnam & Sufi Night'", "'SUMMARY:Vivek & Bhavini · Muhurtham & Bhojnam'");
