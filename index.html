@@ -103,7 +103,7 @@
   /* =========================================================
      2. CARD — Ganesha, monogram, date
   ========================================================= */
-  #card{background:var(--ivory);height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding:0 28px}
+  #card{position:absolute;inset:0;z-index:8;background:var(--ivory);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding:0 28px;opacity:0;pointer-events:none}
   #card .ganesh{width:min(54vw,225px);display:block;margin:0 auto;filter:drop-shadow(0 10px 18px rgba(120,90,30,.28))}
   #card .wi.big{margin:10px 0 4px}
   #card .mono.big{width:150px;height:118px}
@@ -436,14 +436,12 @@
       </svg>
     </div>
     <div id="hint"><span class="eyebrow" style="font-size:9px">Scroll to open</span><span class="line"></span></div>
-  </section>
-
-  <!-- ================= 2. CARD ================= -->
-  <section id="card">
+    <div id="card">
     <div class="emb-frame"><svg class="c tl" viewBox="0 0 200 200"><use href="#bloom"/></svg><svg class="c tr" viewBox="0 0 200 200"><use href="#bloom"/></svg><svg class="c bl" viewBox="0 0 200 200"><use href="#bloom"/></svg><svg class="c br" viewBox="0 0 200 200"><use href="#bloom"/></svg><svg class="e l" viewBox="0 0 160 160"><use href="#vine"/></svg><svg class="e r" viewBox="0 0 160 160"><use href="#vine"/></svg></div>
     <div class="halo"></div>
     <div class="mono big" id="cardMono"><span class="v">V</span><span class="amp">&amp;</span><span class="b">B</span><svg class="swash" viewBox="0 0 150 24" preserveAspectRatio="none"><use href="#swash"/></svg></div>
     <div class="datecode">25 · 26 . 12 . 26</div>
+  </div>
   </section>
 
   <!-- ================= 3. NAMES ================= -->
@@ -686,7 +684,7 @@
   if (reduce) { document.querySelectorAll('.rise').forEach(el => { el.style.opacity = 1; el.style.transform = 'none'; }); return; }
 
   /* ---------- 1. envelope opens on scroll ---------- */
-  const open = gsap.timeline({ scrollTrigger: { trigger: '#open', start: 'top top', end: '+=130%', scrub: .6, pin: true, anticipatePin: 1 } });
+  const open = gsap.timeline({ scrollTrigger: { trigger: '#open', start: 'top top', end: '+=170%', scrub: .6, pin: true, anticipatePin: 1 } });
   open
     .to('#hint', { opacity: 0, duration: .05 }, 0)
     .to('#seal', { scale: .15, opacity: 0, rotate: 40, y: -30, duration: .16, ease: 'power2.in' }, 0)
@@ -698,18 +696,15 @@
     .to('#open .card', { scale: 1.32, y: '0%', duration: .25, ease: 'power2.out' }, .64)
     .to('#open .env', { boxShadow: 'none', duration: .1 }, .64)
     .to('#open', { backgroundColor: '#f4ead8', duration: .25 }, .7)
-    .to('#open .env', { opacity: 0, duration: .08 }, .92);
-
-  /* ---------- 2. card: ganesha draws, monogram lands ---------- */
-  const card = gsap.timeline({ scrollTrigger: { trigger: '#card', start: 'top top', end: '+=45%', scrub: .6, pin: true, anticipatePin: 1 } });
-  card
-    .from('#card .halo', { scale: .4, opacity: 0, duration: .4, ease: 'power2.out' }, 0)
-    .from('#cardMono .v', { x: -80, opacity: 0, duration: .25, ease: 'power3.out' }, .5)
-    .from('#cardMono .b', { x: 80, opacity: 0, duration: .25, ease: 'power3.out' }, .5)
-    .from('#cardMono .amp', { scale: 0, rotate: -90, duration: .18, ease: 'back.out(2)' }, .62)
-    .from('#cardMono .swash', { scaleX: 0, transformOrigin: '0 50%', duration: .2 }, .66)
-    .from('#card .datecode', { opacity: 0, letterSpacing: '1.2em', duration: .2 }, .72)
-    .from('#card .emb-frame', { scale: 1.12, opacity: 0, duration: .5 }, 0);
+    .to('#open .env', { opacity: 0, duration: .06 }, .8)
+    .to('#card', { opacity: 1, duration: .06 }, .8)
+    .from('#card .halo', { scale: .4, opacity: 0, duration: .14, ease: 'power2.out' }, .8)
+    .from('#cardMono .v', { x: -80, opacity: 0, duration: .1, ease: 'power3.out' }, .82)
+    .from('#cardMono .b', { x: 80, opacity: 0, duration: .1, ease: 'power3.out' }, .82)
+    .from('#cardMono .amp', { scale: 0, rotate: -90, duration: .06, ease: 'back.out(2)' }, .88)
+    .from('#cardMono .swash', { scaleX: 0, transformOrigin: '0 50%', duration: .06 }, .9)
+    .from('#card .datecode', { opacity: 0, letterSpacing: '1.2em', duration: .06 }, .92)
+    .from('#card .emb-frame', { scale: 1.12, opacity: 0, duration: .14 }, .8);
 
   /* ---------- 3. names ---------- */
   gsap.utils.toArray('#names .rise').forEach((el, i) => gsap.to(el, { opacity: 1, y: 0, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 88%', once: true }, delay: (i % 4) * .04 }));
