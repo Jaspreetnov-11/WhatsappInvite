@@ -55,7 +55,7 @@
   .orn{display:flex;align-items:center;justify-content:center;gap:10px;color:var(--gold);margin:14px auto}
   .orn::before,.orn::after{content:"";width:64px;height:1px;background:linear-gradient(90deg,transparent,var(--gold));}
   .orn::after{background:linear-gradient(90deg,var(--gold),transparent)}
-  .orn svg{width:26px;height:12px}
+  .orn svg{width:34px;height:14px}
   .rise{opacity:0;transform:translateY(26px)}
 
   /* =========================================================
@@ -147,7 +147,7 @@
   #std .dates .amp{font-family:var(--script);font-size:30px;color:var(--gold)}
   #std .dates .y{font-family:var(--sans);font-size:12px;letter-spacing:.34em}
   #std .where{font-family:var(--sans);font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink);line-height:1.9;margin-top:14px}
-  #std .bouquet{width:92px;margin-top:22px;color:var(--gold)}
+  #std .orn.end{margin-top:26px}
   #std .ticker{position:absolute;left:0;right:0;bottom:5%;white-space:nowrap;font-size:clamp(26px,8vw,36px);font-style:italic;color:transparent;-webkit-text-stroke:1px var(--gold);opacity:.75;will-change:transform}
   #std .ticker span{padding-right:42px}
 
@@ -392,17 +392,9 @@
       </g>
     </symbol>
     <symbol id="orn" viewBox="0 0 60 24">
-      <g fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
-        <path d="M2 12 C10 4 18 4 24 12 C18 20 10 20 2 12Z M36 12 C42 4 50 4 58 12 C50 20 42 20 36 12Z"/>
-        <circle cx="30" cy="12" r="2.4" fill="currentColor"/><path d="M26 12 h-2 M34 12 h2"/>
-      </g>
-    </symbol>
-    <symbol id="bouquet" viewBox="0 0 100 100">
-      <g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
-        <path d="M50 60 L44 92 M50 60 L50 94 M50 60 L56 92 M40 86 C46 88 54 88 60 86"/>
-        <g fill="currentColor" opacity=".9"><circle cx="50" cy="42" r="12"/><circle cx="32" cy="50" r="9"/><circle cx="68" cy="50" r="9"/><circle cx="42" cy="28" r="7"/><circle cx="60" cy="28" r="7"/></g>
-        <path d="M50 42 m-6 0 a6 6 0 1 0 12 0 a6 6 0 1 0 -12 0" stroke="#f4ead8"/>
-        <path d="M28 60 C20 66 16 72 18 78 M72 60 C80 66 84 72 82 78 M36 62 C30 70 30 76 34 80 M64 62 C70 70 70 76 66 80" />
+      <g fill="currentColor">
+        <g transform="translate(30 12)"><ellipse cx="0" cy="-5.2" rx="2.4" ry="4.6"/><ellipse cx="0" cy="-5.2" rx="2.4" ry="4.6" transform="rotate(72)"/><ellipse cx="0" cy="-5.2" rx="2.4" ry="4.6" transform="rotate(144)"/><ellipse cx="0" cy="-5.2" rx="2.4" ry="4.6" transform="rotate(216)"/><ellipse cx="0" cy="-5.2" rx="2.4" ry="4.6" transform="rotate(288)"/><circle r="1.6" fill="#f4ead8"/></g>
+        <circle cx="21" cy="12" r="1"/><circle cx="39" cy="12" r="1"/>
       </g>
     </symbol>
     <symbol id="sprig" viewBox="0 0 60 120">
@@ -486,7 +478,7 @@
     <div class="orn"><svg viewBox="0 0 60 24"><use href="#orn"/></svg></div>
     <div class="dates"><span class="m">December</span><span class="n" id="n24">25</span><span class="amp">&amp;</span><span class="n" id="n26">26</span><span class="y">2026</span></div>
     <div class="where">Maira Resort &amp; Convention Center<br>Raipur, Chhattisgarh</div>
-    <svg class="bouquet" viewBox="0 0 100 100"><use href="#bouquet"/></svg>
+    <div class="orn end"><svg viewBox="0 0 60 24"><use href="#orn"/></svg></div>
     <div class="ticker"><span>Haldi · Mehendi · Baraat · Sangeet · Muhurtham · Bhojnam · Sufi Night ·</span><span>Haldi · Mehendi · Baraat · Sangeet · Muhurtham · Bhojnam · Sufi Night ·</span><span>Haldi · Mehendi · Baraat · Sangeet · Muhurtham · Bhojnam · Sufi Night ·</span></div>
   </section>
 
@@ -758,7 +750,7 @@
     .from('#n26', { xPercent: 120, opacity: 0, duration: .3, ease: 'power3.out' }, .36)
     .from('#std .dates .amp', { scale: 0, duration: .15, ease: 'back.out(2)' }, .5)
     .from('#std .dates .m, #std .dates .y, #std .where', { opacity: 0, y: 10, stagger: .05, duration: .2 }, .52)
-    .from('#std .bouquet', { scale: 0, opacity: 0, transformOrigin: '50% 100%', duration: .25, ease: 'back.out(1.5)' }, .62);
+    .from('#std .orn.end', { scaleX: 0, opacity: 0, duration: .25 }, .62);
   gsap.to('#std .ticker', { xPercent: -34, ease: 'none', scrollTrigger: { trigger: '#std', start: 'top bottom', end: 'bottom+=130% top', scrub: .8 } });
 
   /* ---------- 5. day 1 horizontal ---------- */
