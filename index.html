@@ -176,9 +176,8 @@
   ========================================================= */
   #day2{background:var(--ivory-2)}
   #kolam-wrap{height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 28px;overflow:hidden}
-  #kolam{width:170px;color:var(--gold-deep)}
-  #kolam path{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round}
-  #kolam-wrap h2{font-size:clamp(17px,5vw,20px);letter-spacing:.18em;text-transform:uppercase;font-weight:500;color:var(--gold-deep);margin-top:26px}
+  #kolam-wrap .orn.top{margin:0 auto 14px}
+  #kolam-wrap h2{font-size:clamp(17px,5vw,20px);letter-spacing:.18em;text-transform:uppercase;font-weight:500;color:var(--gold-deep);margin-top:0}
   #kolam-wrap h2 sup{font-size:.55em;letter-spacing:0}
   #kolam-wrap p{font-style:italic;color:var(--ink-soft);font-size:14px;margin-top:8px}
   .stack{padding:0 24px 40px;position:relative}
@@ -522,21 +521,7 @@
   <section id="day2">
     <div id="kolam-wrap">
       <div class="emb-frame"><svg class="c tl" viewBox="0 0 200 200"><use href="#bloom"/></svg><svg class="c tr" viewBox="0 0 200 200"><use href="#bloom"/></svg><svg class="c bl" viewBox="0 0 200 200"><use href="#bloom"/></svg><svg class="c br" viewBox="0 0 200 200"><use href="#bloom"/></svg></div>
-      <svg id="kolam" viewBox="0 0 200 200">
-        <g class="draw">
-          <path d="M100 30 C120 30 130 50 118 62 C110 70 100 70 100 60 C100 70 90 70 82 62 C70 50 80 30 100 30Z"/>
-          <path d="M100 170 C80 170 70 150 82 138 C90 130 100 130 100 140 C100 130 110 130 118 138 C130 150 120 170 100 170Z"/>
-          <path d="M30 100 C30 80 50 70 62 82 C70 90 70 100 60 100 C70 100 70 110 62 118 C50 130 30 120 30 100Z"/>
-          <path d="M170 100 C170 120 150 130 138 118 C130 110 130 100 140 100 C130 100 130 90 138 82 C150 70 170 80 170 100Z"/>
-          <path d="M100 60 C112 60 118 72 118 82 C118 92 112 100 100 100 C88 100 82 92 82 82 C82 72 88 60 100 60Z"/>
-          <path d="M100 140 C88 140 82 128 82 118 C82 108 88 100 100 100 C112 100 118 108 118 118 C118 128 112 140 100 140Z"/>
-          <path d="M60 100 C60 88 72 82 82 82 C92 82 100 88 100 100 C100 112 92 118 82 118 C72 118 60 112 60 100Z"/>
-          <path d="M140 100 C140 112 128 118 118 118 C108 118 100 112 100 100 C100 88 108 82 118 82 C128 82 140 88 140 100Z"/>
-          <path d="M62 62 C70 54 82 54 88 62 C94 70 92 80 84 84 M138 62 C130 54 118 54 112 62 C106 70 108 80 116 84 M62 138 C70 146 82 146 88 138 C94 130 92 120 84 116 M138 138 C130 146 118 146 112 138 C106 130 108 120 116 116"/>
-        </g>
-        <g class="dots" fill="currentColor"><circle cx="100" cy="42" r="2.4"/><circle cx="100" cy="158" r="2.4"/><circle cx="42" cy="100" r="2.4"/><circle cx="158" cy="100" r="2.4"/><circle cx="72" cy="72" r="2"/><circle cx="128" cy="72" r="2"/><circle cx="72" cy="128" r="2"/><circle cx="128" cy="128" r="2"/></g>
-        <rect class="dia" x="90" y="90" width="20" height="20" transform="rotate(45 100 100)" fill="#8f6f27"/>
-      </svg>
+      <div class="orn top"><svg viewBox="0 0 60 24"><use href="#orn"/></svg></div>
       <h2>Saturday, 26<sup>th</sup> December, 2026</h2>
       <p>The wedding day</p>
     </div>
@@ -767,12 +752,9 @@
   }
 
   /* ---------- 6. day 2 kolam draw ---------- */
-  document.querySelectorAll('#kolam .draw path').forEach(p => { const L = p.getTotalLength(); p.style.strokeDasharray = L; p.style.strokeDashoffset = L; });
-  const k = gsap.timeline({ scrollTrigger: { trigger: '#kolam-wrap', start: 'top top', end: '+=110%', scrub: .6, pin: true, anticipatePin: 1 } });
-  k.to('#kolam .draw path', { strokeDashoffset: 0, stagger: .06, duration: .7, ease: 'none' }, 0)
-   .from('#kolam .dots circle', { scale: 0, transformOrigin: '50% 50%', stagger: .03, duration: .2 }, .5)
-   .from('#kolam .dia', { scale: 0, rotate: 135, transformOrigin: '50% 50%', duration: .25, ease: 'back.out(2)' }, .7)
-   .from('#kolam-wrap h2, #kolam-wrap p', { opacity: 0, y: 16, stagger: .08, duration: .3 }, .55);
+  const k = gsap.timeline({ scrollTrigger: { trigger: '#kolam-wrap', start: 'top top', end: '+=60%', scrub: .6, pin: true, anticipatePin: 1 } });
+  k.from('#kolam-wrap .orn.top', { scaleX: 0, opacity: 0, duration: .3 }, 0)
+   .from('#kolam-wrap h2, #kolam-wrap p', { opacity: 0, y: 16, stagger: .08, duration: .3 }, .2);
   gsap.utils.toArray('.stack .card').forEach((c, i, arr) => {
     gsap.to(c, { scale: 1 - (arr.length - 1 - i) * .04, filter: 'brightness(' + (1 - (arr.length - 1 - i) * .06) + ')', ease: 'none', scrollTrigger: { trigger: c, start: 'top 80px', end: () => 'top+=' + (arr.length - i) * 260 + ' 80px', scrub: true } });
   });
