@@ -153,13 +153,12 @@
   /* =========================================================
      5. DAY 1 — horizontal cards
   ========================================================= */
-  .day{background:var(--ivory);height:100svh;overflow:hidden;display:flex;flex-direction:column}
-  .day .head{padding:74px 28px 0;text-align:center}
+  .day{background:var(--ivory)}
+  .day .head{padding:56px 28px 10px;text-align:center}
   .day .head h2{font-size:clamp(17px,5vw,20px);letter-spacing:.18em;text-transform:uppercase;font-weight:500;color:var(--gold-deep)}
   .day .head h2 sup{font-size:.55em;letter-spacing:0}
   .day .head p{font-style:italic;color:var(--ink);font-size:14.5px;line-height:1.5;margin-top:8px}
-  .track{display:flex;gap:16px;padding:26px 28px 0;flex:1;align-items:flex-start;will-change:transform}
-  .card{flex:0 0 min(74vw,330px);background:var(--ivory-3);border:1px solid var(--gold-2);box-shadow:inset 0 0 0 4px var(--ivory-3),inset 0 0 0 5px var(--gold-2),0 22px 40px -22px rgba(90,71,38,.45);padding:34px 22px 26px;text-align:center;transform-origin:50% 100%;position:relative}
+  .card{background:var(--ivory-3);border:1px solid var(--gold-2);box-shadow:inset 0 0 0 4px var(--ivory-3),inset 0 0 0 5px var(--gold-2),0 22px 40px -22px rgba(90,71,38,.45);padding:34px 22px 26px;text-align:center;transform-origin:50% 100%;position:relative}
   .card .ico{width:60px;height:60px;margin:0 auto 14px;color:var(--gold-deep)}
   .card .ico svg{width:100%;height:100%}
   .card .ico.big{width:84px;height:80px;color:#765921}
@@ -168,9 +167,6 @@
   .card p{font-style:italic;color:var(--ink);font-size:14px;line-height:1.5;margin:10px 0 14px}
   .card .time{font-size:22px;color:var(--ink);letter-spacing:.02em}
   .card .idx{position:absolute;top:12px;left:14px;font-family:var(--sans);font-size:10px;letter-spacing:.3em;color:var(--gold)}
-  .day .venue-tag{position:absolute;bottom:30px;left:0;right:0;text-align:center}
-  .day .venue-tag b{display:block;font-size:13px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;color:var(--gold-deep)}
-  .day .venue-tag span{font-size:13.5px;color:var(--ink);font-style:italic}
 
   /* =========================================================
      6. DAY 2 — kolam draw + stacked cards
@@ -485,7 +481,7 @@
       <h2>Friday, 25<sup>th</sup> December, 2026</h2>
       <p>Join us for a day filled with vibrant traditions,<br>joyful celebrations, &amp; unforgettable memories.</p>
     </div>
-    <div class="track" id="track">
+    <div class="stack">
       <div class="card">
         <span class="idx">01</span>
         <div class="ico big wide"><svg viewBox="0 0 654 302.33"><use href="#haldiIcon" width="1308.9" height="302.33"/></svg></div>
@@ -507,8 +503,8 @@
         <p>An evening inspired by our journey together and the moments that brought us here</p>
         <div class="time">7 pm onwards</div>
       </div>
+      <div class="spacer"></div>
     </div>
-    <div class="venue-tag"><b>Maira Resort &amp; Convention Center</b><span>Raipur, Chhattisgarh</span></div>
   </section>
 
   <!-- ================= 6. DAY 2 ================= -->
@@ -715,24 +711,14 @@
     .from('#std .dates .m, #std .dates .y, #std .where', { opacity: 0, y: 10, stagger: .05, duration: .2 }, .52)
     .from('#std .orn.end', { scaleX: 0, opacity: 0, duration: .25 }, .62);
 
-  /* ---------- 5. day 1 horizontal ---------- */
-  const track = document.getElementById('track');
-  if (track) {
-  const dist = () => track.scrollWidth - document.getElementById('day1').clientWidth + 28;
-  const d1 = gsap.timeline({ scrollTrigger: { trigger: '#day1', start: 'top top', end: () => '+=' + (dist() + innerHeight * .05), scrub: .8, pin: true, anticipatePin: 1, invalidateOnRefresh: true } });
-  d1.from('#day1 .cranes', { x: -80, opacity: 0, duration: .2 }, 0)
-    .from('#day1 .head h2, #day1 .head p', { y: 20, opacity: 0, stagger: .05, duration: .2 }, 0)
-    .to(track, { x: () => -dist(), ease: 'none', duration: 1 }, .1);
-  gsap.utils.toArray('#track .card').forEach((c, i) => {
-    gsap.fromTo(c, { rotate: i === 0 ? 0 : 7, y: i === 0 ? 0 : 60 }, { rotate: 0, y: 0, ease: 'power2.out', scrollTrigger: { containerAnimation: d1, trigger: c, start: 'left 90%', end: 'left 45%', scrub: true } });
-  });
-  }
+  /* ---------- 5. day 1 header reveal ---------- */
+  gsap.from('#day1 .head > *', { opacity: 0, y: 18, stagger: .08, duration: .8, ease: 'power2.out', scrollTrigger: { trigger: '#day1', start: 'top 80%', once: true } });
 
   /* ---------- 6. day 2 kolam draw ---------- */
   gsap.from('#kolam-wrap .wd', { opacity: 0, scale: .94, transformOrigin: '50% 50%', duration: .9, ease: 'power2.out', scrollTrigger: { trigger: '#kolam-wrap', start: 'top 80%', once: true } });
-  gsap.utils.toArray('.stack .card').forEach((c, i, arr) => {
+  document.querySelectorAll('.stack').forEach(st => gsap.utils.toArray(st.querySelectorAll('.card')).forEach((c, i, arr) => {
     gsap.to(c, { scale: 1 - (arr.length - 1 - i) * .04, ease: 'none', scrollTrigger: { trigger: c, start: 'top 80px', end: () => 'top+=' + (arr.length - i) * 260 + ' 80px', scrub: true } });
-  });
+  }));
 
   /* ---------- 7 + 8 + 9 reveals ---------- */
   gsap.utils.toArray('#venue .rise, #rsvp .rise').forEach((el) => gsap.to(el, { opacity: 1, y: 0, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 96%', once: true } }));
