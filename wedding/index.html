@@ -106,14 +106,15 @@
   #card{background:var(--ivory);height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding:0 28px}
   #card .ganesh{width:min(54vw,225px);display:block;margin:0 auto;filter:drop-shadow(0 10px 18px rgba(120,90,30,.28))}
   #card .wi.big{margin:10px 0 4px}
-  #card .mono.big{width:170px;height:130px}
-  #card .mono.big .v,#card .mono.big .b{font-size:96px}
-  #card .mono.big .v{transform:translate(8px,-18px)}
-  #card .mono.big .b{transform:translate(-4px,18px)}
-  #card .mono.big .amp{font-size:28px}
-  #card .halo{position:absolute;left:50%;top:14%;width:80%;aspect-ratio:1;border-radius:50%;transform:translateX(-50%);background:radial-gradient(circle,rgba(233,214,168,.8) 0%,rgba(233,214,168,.3) 45%,rgba(233,214,168,0) 70%);pointer-events:none}
+  #card .mono.big{width:250px;height:220px}
+  #card .mono.big .v,#card .mono.big .b{font-size:150px}
+  #card .mono.big .v{transform:translate(12px,-30px)}
+  #card .mono.big .b{transform:translate(-6px,30px)}
+  #card .mono.big .amp{font-size:40px}
+  #card .mono.big .swash{height:36px}
+  #card .halo{position:absolute;left:50%;top:50%;width:80%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(233,214,168,.8) 0%,rgba(233,214,168,.3) 45%,rgba(233,214,168,0) 70%);pointer-events:none}
   #card .shloka{font-size:13px;letter-spacing:.1em;color:var(--ink-soft);margin-bottom:8px}
-  #card .datecode{font-family:var(--sans);font-weight:400;font-size:15px;letter-spacing:.5em;color:var(--ink);margin-top:14px;padding-left:.5em}
+  #card .datecode{font-family:var(--sans);font-weight:400;font-size:16px;letter-spacing:.5em;color:var(--ink);margin-top:26px;padding-left:.5em}
 
   /* =========================================================
      3. NAMES
@@ -443,8 +444,6 @@
   <section id="card">
     <div class="emb-frame"><svg class="c tl" viewBox="0 0 200 200"><use href="#bloom"/></svg><svg class="c tr" viewBox="0 0 200 200"><use href="#bloom"/></svg><svg class="c bl" viewBox="0 0 200 200"><use href="#bloom"/></svg><svg class="c br" viewBox="0 0 200 200"><use href="#bloom"/></svg><svg class="e l" viewBox="0 0 160 160"><use href="#vine"/></svg><svg class="e r" viewBox="0 0 160 160"><use href="#vine"/></svg></div>
     <div class="halo"></div>
-    <div class="shloka">॥ श्री गणेशाय नमः ॥</div>
-    <svg class="ganesh" id="heroGanesh" viewBox="0 0 614 636"><use href="#ganeshArt" width="614" height="636"/></svg>
     <div class="mono big" id="cardMono"><span class="v">V</span><span class="amp">&amp;</span><span class="b">B</span><svg class="swash" viewBox="0 0 150 24" preserveAspectRatio="none"><use href="#swash"/></svg></div>
     <div class="datecode">26 . 12 . 2026</div>
   </section>
@@ -635,9 +634,7 @@
   /* ---------- 2. card: ganesha draws, monogram lands ---------- */
   const card = gsap.timeline({ scrollTrigger: { trigger: '#card', start: 'top top', end: '+=120%', scrub: .6, pin: true, anticipatePin: 1 } });
   card
-    .from('#heroGanesh', { scale: .55, opacity: 0, y: 40, transformOrigin: '50% 100%', duration: .4, ease: 'power3.out' }, 0)
     .from('#card .halo', { scale: .4, opacity: 0, duration: .4, ease: 'power2.out' }, 0)
-    .from('#card .shloka', { opacity: 0, y: -10, duration: .15 }, .3)
     .from('#cardMono .v', { x: -80, opacity: 0, duration: .25, ease: 'power3.out' }, .5)
     .from('#cardMono .b', { x: 80, opacity: 0, duration: .25, ease: 'power3.out' }, .5)
     .from('#cardMono .amp', { scale: 0, rotate: -90, duration: .18, ease: 'back.out(2)' }, .62)
