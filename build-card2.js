@@ -6,7 +6,7 @@ const must = (from, to, label) => { if (!h.includes(from)) throw new Error('miss
 const cut = (re, label) => { if (!re.test(h)) throw new Error('missing: ' + label); h = h.replace(re, ''); };
 
 cut(/\s*<!-- ================= 8\. RSVP ================= -->[\s\S]*?<\/section>/, 'rsvp section');
-cut(/\s*<div class="card">\s*<span class="idx">03<\/span>[\s\S]*?<h3>Sufi Night<\/h3>[\s\S]*?<\/div>\s*<\/div>/, 'sufi card');
+cut(/\s*<div class="card">\s*<span class="idx">03<\/span>(?:(?!<div class="card">)[\s\S])*?<h3>Sufi Night<\/h3>[\s\S]*?<div class="time">[^<]*<\/div>\s*<\/div>/, 'sufi card');
 
 h = h.replace(/Haldi · Mehendi · Baraat · Sangeet · Muhurtham · Bhojnam · Sufi Night ·/g, 'Muhurtham · Bhojnam · Vivek &amp; Bhavini ·');
 must("'SUMMARY:Vivek & Bhavini · Muhurtham, Bhojnam & Sufi Night'", "'SUMMARY:Vivek & Bhavini · Muhurtham & Bhojnam'");

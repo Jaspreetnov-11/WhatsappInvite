@@ -235,10 +235,6 @@
   /* =========================================================
      9. THANK YOU + footer
   ========================================================= */
-  #thanks{background:var(--ivory-2);padding:72px 34px 64px;text-align:center;overflow:hidden}
-  #thanks p{font-family:var(--script);font-size:clamp(24px,7vw,30px);color:var(--ink);line-height:1.35;max-width:340px;margin:0 auto}
-  #thanks .with{font-family:var(--sans);font-size:11px;letter-spacing:.36em;text-transform:uppercase;color:var(--ink-soft);margin-top:26px}
-  #thanks .names{font-size:clamp(22px,7vw,28px);letter-spacing:.14em;text-transform:uppercase;font-weight:400;color:var(--gold-deep);margin-top:8px}
   footer{background:var(--champ);color:var(--gold-deep);text-align:center;padding:26px 20px 34px;font-family:var(--sans);font-size:10px;letter-spacing:.4em;text-transform:uppercase}
   footer .m{font-family:var(--script);font-size:34px;letter-spacing:0;text-transform:none;color:var(--gold-deep);display:block;margin-bottom:6px}
 
@@ -585,14 +581,6 @@
     </form>
   </section>
 
-  <!-- ================= 9. THANK YOU ================= -->
-  <section id="thanks">
-    <div class="emb-frame"><svg class="c tl" viewBox="0 0 200 200"><use href="#bloom"/></svg><svg class="c tr" viewBox="0 0 200 200"><use href="#bloom"/></svg><svg class="c bl" viewBox="0 0 200 200"><use href="#bloom"/></svg><svg class="c br" viewBox="0 0 200 200"><use href="#bloom"/></svg></div>
-    <p class="rise">Thank you for being part of our journey. Your love and blessings mean the world to us.</p>
-    <div class="with rise">With love</div>
-    <div class="names rise">Vivek &amp; Bhavini</div>
-  </section>
-
   <footer>
     <span class="m">V &amp; B</span>
     25 · 26 December 2026 · Raipur
@@ -745,7 +733,7 @@
   });
 
   /* ---------- 7 + 8 + 9 reveals ---------- */
-  gsap.utils.toArray('#venue .rise, #rsvp .rise, #thanks .rise').forEach((el) => gsap.to(el, { opacity: 1, y: 0, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 96%', once: true } }));
+  gsap.utils.toArray('#venue .rise, #rsvp .rise').forEach((el) => gsap.to(el, { opacity: 1, y: 0, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 96%', once: true } }));
   gsap.to('#venue .ring', { rotate: 120, ease: 'none', scrollTrigger: { trigger: '#venue', start: 'top bottom', end: 'bottom top', scrub: 1 } });
   if (document.querySelector('#rsvp .rs')) gsap.from('#rsvp .rs span', { y: 60, opacity: 0, stagger: .08, ease: 'power3.out', scrollTrigger: { trigger: '#rsvp', start: 'top 70%', end: 'top 25%', scrub: .8 } });
 
