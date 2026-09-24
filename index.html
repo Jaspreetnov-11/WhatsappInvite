@@ -137,7 +137,7 @@
   /* =========================================================
      4. SAVE THE DATE
   ========================================================= */
-  #std{background:var(--ivory-2);height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 24px}
+  #std{background:var(--ivory-2);min-height:78svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:56px 24px}
   #std .word{font-weight:400;color:var(--gold-deep);line-height:.92;letter-spacing:.06em;text-transform:uppercase}
   #std .word.a,#std .word.c{font-size:clamp(62px,19vw,84px)}
   #std .word.a::first-letter,#std .word.c::first-letter{font-size:1.28em}
@@ -149,8 +149,6 @@
   #std .dates .y{font-family:var(--sans);font-size:12px;letter-spacing:.34em}
   #std .where{font-family:var(--sans);font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink);line-height:1.9;margin-top:14px}
   #std .orn.end{margin-top:26px}
-  #std .ticker{position:absolute;left:0;right:0;bottom:5%;white-space:nowrap;font-size:clamp(26px,8vw,36px);font-style:italic;color:transparent;-webkit-text-stroke:1px var(--gold);opacity:.75;will-change:transform}
-  #std .ticker span{padding-right:42px}
 
   /* =========================================================
      5. DAY 1 — horizontal cards
@@ -176,8 +174,8 @@
      6. DAY 2 — kolam draw + stacked cards
   ========================================================= */
   #day2{background:var(--ivory-2)}
-  #kolam-wrap{height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 28px;overflow:hidden}
-  #kolam-wrap{padding:0;background:#f4ead8}
+  #kolam-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+  #kolam-wrap{padding:8px 0 0;background:#f4ead8}
   #kolam-wrap .wd{width:100%;height:auto;max-height:100svh;display:block}
   .stack{padding:0 24px 40px;position:relative}
   .stack .card{flex:none;width:100%;position:sticky;margin:0 auto 20px}
@@ -471,7 +469,6 @@
     <div class="dates"><span class="m">December</span><span class="n" id="n24">25</span><span class="amp">&amp;</span><span class="n" id="n26">26</span><span class="y">2026</span></div>
     <div class="where">Maira Resort &amp; Convention Center<br>Raipur, Chhattisgarh</div>
     <div class="orn end"><svg viewBox="0 0 60 24"><use href="#orn"/></svg></div>
-    <div class="ticker"><span>Haldi · Mehendi · Baraat · Sangeet · Muhurtham · Bhojnam · Sufi Night ·</span><span>Haldi · Mehendi · Baraat · Sangeet · Muhurtham · Bhojnam · Sufi Night ·</span><span>Haldi · Mehendi · Baraat · Sangeet · Muhurtham · Bhojnam · Sufi Night ·</span></div>
   </section>
 
   <!-- ================= 5. DAY 1 ================= -->
@@ -684,7 +681,7 @@
   if (reduce) { document.querySelectorAll('.rise').forEach(el => { el.style.opacity = 1; el.style.transform = 'none'; }); return; }
 
   /* ---------- 1. envelope opens on scroll ---------- */
-  const open = gsap.timeline({ scrollTrigger: { trigger: '#open', start: 'top top', end: '+=170%', scrub: .6, pin: true, anticipatePin: 1 } });
+  const open = gsap.timeline({ scrollTrigger: { trigger: '#open', start: 'top top', end: '+=110%', scrub: .6, pin: true, anticipatePin: 1 } });
   open
     .to('#hint', { opacity: 0, duration: .05 }, 0)
     .to('#seal', { scale: .15, opacity: 0, rotate: 40, y: -30, duration: .16, ease: 'power2.in' }, 0)
@@ -710,7 +707,7 @@
   gsap.utils.toArray('#names .rise').forEach((el, i) => gsap.to(el, { opacity: 1, y: 0, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 96%', once: true }, delay: (i % 4) * .04 }));
 
   /* ---------- 4. save the date ---------- */
-  const std = gsap.timeline({ scrollTrigger: { trigger: '#std', start: 'top top', end: '+=45%', scrub: .7, pin: true, anticipatePin: 1 } });
+  const std = gsap.timeline({ scrollTrigger: { trigger: '#std', start: 'top top', end: '+=25%', scrub: .7, pin: true, anticipatePin: 1 } });
   std
     .from('#std .word.a', { yPercent: 80, opacity: 0, letterSpacing: '.5em', duration: .3, ease: 'power3.out' }, 0)
     .from('#std .word.b', { opacity: 0, duration: .2 }, .12)
@@ -721,13 +718,12 @@
     .from('#std .dates .amp', { scale: 0, duration: .15, ease: 'back.out(2)' }, .5)
     .from('#std .dates .m, #std .dates .y, #std .where', { opacity: 0, y: 10, stagger: .05, duration: .2 }, .52)
     .from('#std .orn.end', { scaleX: 0, opacity: 0, duration: .25 }, .62);
-  gsap.to('#std .ticker', { xPercent: -34, ease: 'none', scrollTrigger: { trigger: '#std', start: 'top bottom', end: 'bottom+=45% top', scrub: .8 } });
 
   /* ---------- 5. day 1 horizontal ---------- */
   const track = document.getElementById('track');
   if (track) {
   const dist = () => track.scrollWidth - document.getElementById('day1').clientWidth + 28;
-  const d1 = gsap.timeline({ scrollTrigger: { trigger: '#day1', start: 'top top', end: () => '+=' + (dist() + innerHeight * .15), scrub: .8, pin: true, anticipatePin: 1, invalidateOnRefresh: true } });
+  const d1 = gsap.timeline({ scrollTrigger: { trigger: '#day1', start: 'top top', end: () => '+=' + (dist() + innerHeight * .05), scrub: .8, pin: true, anticipatePin: 1, invalidateOnRefresh: true } });
   d1.from('#day1 .cranes', { x: -80, opacity: 0, duration: .2 }, 0)
     .from('#day1 .head h2, #day1 .head p', { y: 20, opacity: 0, stagger: .05, duration: .2 }, 0)
     .to(track, { x: () => -dist(), ease: 'none', duration: 1 }, .1);
@@ -737,8 +733,7 @@
   }
 
   /* ---------- 6. day 2 kolam draw ---------- */
-  const k = gsap.timeline({ scrollTrigger: { trigger: '#kolam-wrap', start: 'top top', end: '+=30%', scrub: .6, pin: true, anticipatePin: 1 } });
-  k.from('#kolam-wrap .wd', { opacity: 0, scale: .92, transformOrigin: '50% 50%', duration: .45, ease: 'power2.out' }, 0);
+  gsap.from('#kolam-wrap .wd', { opacity: 0, scale: .94, transformOrigin: '50% 50%', duration: .9, ease: 'power2.out', scrollTrigger: { trigger: '#kolam-wrap', start: 'top 80%', once: true } });
   gsap.utils.toArray('.stack .card').forEach((c, i, arr) => {
     gsap.to(c, { scale: 1 - (arr.length - 1 - i) * .04, filter: 'brightness(' + (1 - (arr.length - 1 - i) * .06) + ')', ease: 'none', scrollTrigger: { trigger: c, start: 'top 80px', end: () => 'top+=' + (arr.length - i) * 260 + ' 80px', scrub: true } });
   });
