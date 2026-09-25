@@ -851,13 +851,13 @@
       font-style: italic;
       font-weight: 500;
       color: var(--ink);
-      font-size: 14px;
+      font-size: 24px;
       line-height: 1.5;
       margin: 10px 0 14px
     }
 
     .card .time {
-      font-size: 26px;
+      font-size: 30px;
       font-weight: 600;
       color: var(--ink);
       letter-spacing: .02em
@@ -1409,8 +1409,13 @@
     }
 
     @keyframes eqBar {
-      0% { transform: scaleY(0.2); }
-      100% { transform: scaleY(1); }
+      0% {
+        transform: scaleY(0.2);
+      }
+
+      100% {
+        transform: scaleY(1);
+      }
     }
 
     .music-btn .mute-icon {
@@ -1521,13 +1526,13 @@
       }
 
       .card p {
-        font-size: 14px;
+        font-size: 24px;
         font-weight: 500;
         line-height: 1.5;
       }
 
       .card .time {
-        font-size: 24px;
+        font-size: 30px;
         font-weight: 700;
       }
 
@@ -7731,7 +7736,8 @@
       <span class="bar b4"></span>
     </span>
     <span class="music-icon mute-icon">
-      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2"
+        stroke-linecap="round" stroke-linejoin="round">
         <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
         <line x1="23" y1="9" x2="17" y2="15"></line>
         <line x1="17" y1="9" x2="23" y2="15"></line>
@@ -7873,7 +7879,7 @@
         if (!bgMusic || isUserPaused) return;
         try {
           bgMusic.volume = 0.85;
-        } catch (_) {}
+        } catch (_) { }
         const promise = bgMusic.play();
         if (promise !== undefined) {
           promise.then(() => {
