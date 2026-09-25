@@ -547,7 +547,7 @@
 
     #names .lead {
       font-style: italic;
-      font-size: clamp(12.5px, 2.8vw, 16px);
+      font-size: clamp(12.5px, 2.8vw, 20px);
       font-weight: 600;
       color: var(--ink);
       line-height: 1.35;
@@ -556,7 +556,7 @@
     #names .lead b {
       font-style: normal;
       font-weight: 700;
-      font-size: clamp(13px, 2.9vw, 16.5px);
+      font-size: clamp(12.5px, 2.8vw, 20px);
       display: block;
       margin-top: 1px;
     }
@@ -699,7 +699,7 @@
 
     #std .word.a,
     #std .word.c {
-      font-size: clamp(40px, 14.5vw, 40px)
+      font-size: clamp(48px, 14.5vw, 64px)
     }
 
     #std .word.a::first-letter,
@@ -725,8 +725,7 @@
 
     #std .dates .m {
       font-family: var(--sans);
-      font-size: 14px;
-      font-weight: 500;
+      font-size: 12px;
       letter-spacing: .34em;
       text-transform: uppercase
     }
@@ -746,20 +745,18 @@
 
     #std .dates .y {
       font-family: var(--sans);
-      font-size: 14px;
-      font-weight: 500;
+      font-size: 12px;
       letter-spacing: .34em
     }
 
     #std .where {
       font-family: var(--sans);
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: .18em;
+      font-size: 12.5px;
+      letter-spacing: .24em;
       text-transform: uppercase;
       color: var(--ink);
-      line-height: 1.8;
-      margin-top: 14px;
+      line-height: 1.9;
+      margin-top: 14px
     }
 
     #std .orn.end {
@@ -840,7 +837,7 @@
     }
 
     .card h3 {
-      font-size: 24px;
+      font-size: 21px;
       letter-spacing: .14em;
       text-transform: uppercase;
       font-weight: 600;
@@ -851,13 +848,13 @@
       font-style: italic;
       font-weight: 500;
       color: var(--ink);
-      font-size: 18px;
+      font-size: 15.5px;
       line-height: 1.5;
       margin: 10px 0 14px
     }
 
     .card .time {
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 600;
       color: var(--ink);
       letter-spacing: .02em
@@ -868,8 +865,8 @@
       top: 12px;
       left: 14px;
       font-family: var(--sans);
-      font-size: 14px;
-      font-weight: 600;
+      font-size: 11px;
+      font-weight: 500;
       letter-spacing: .3em;
       color: var(--gold-deep)
     }
@@ -928,78 +925,6 @@
 
     .stack .spacer {
       height: 8svh
-    }
-
-    /* =========================================================
-     6.5 FAMILY MESSAGE
-  ========================================================= */
-    #family-note {
-      background: var(--ivory);
-      padding: clamp(34px, 5.5vh, 52px) 24px clamp(44px, 7vh, 64px);
-      position: relative;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    #family-note .orn {
-      height: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 16px;
-      color: var(--gold);
-    }
-
-    #family-note .orn svg {
-      width: clamp(44px, 10vw, 56px);
-      height: 100%;
-    }
-
-    #family-note .msg-quote {
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: clamp(19px, 4.8vw, 24px);
-      font-weight: 500;
-      color: var(--ink);
-      line-height: 1.55;
-      margin: 0 auto 18px;
-      max-width: 480px;
-      letter-spacing: .01em;
-    }
-
-    #family-note .msg-sign {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 3px;
-      margin-bottom: 16px;
-    }
-
-    #family-note .sign-tag {
-      font-family: var(--script);
-      font-size: clamp(23px, 5.8vw, 29px);
-      font-weight: 600;
-      color: var(--gold-deep);
-      line-height: 1.15;
-    }
-
-    #family-note .fam-name {
-      font-family: var(--serif);
-      font-size: clamp(17px, 4.3vw, 21px);
-      font-weight: 700;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--gold-deep);
-      margin-top: 3px;
-    }
-
-    #family-note .orn.end {
-      margin-top: 0;
-      margin-bottom: 0;
     }
 
     /* =========================================================
@@ -1340,141 +1265,92 @@
 
     @media (max-width: 480px) {
       #names .lead {
-        font-size: 15.5px;
+        font-size: 13px;
         font-weight: 600;
         line-height: 1.35;
       }
 
       #names .lead b {
-        font-size: 16.5px;
+        font-size: 13.5px;
         font-weight: 700;
       }
 
       #names .invited {
-        font-size: 12.5px;
+        font-size: 9.5px;
         font-weight: 700;
-        letter-spacing: .28em;
+        letter-spacing: .32em;
       }
 
       #names .par i {
-        font-size: 20px;
+        font-size: 17px;
         font-weight: 700;
       }
 
       #names .par b {
-        font-size: 15.5px;
+        font-size: 12.5px;
         font-weight: 700;
         letter-spacing: .04em;
       }
 
       #names .par span {
-        font-size: 18px;
+        font-size: 15px;
         font-weight: 700;
       }
 
       #names .with {
-        font-size: 21.5px;
+        font-size: 18.5px;
         font-weight: 700;
       }
 
       #names .married {
-        font-size: 12.5px;
+        font-size: 9.5px;
         font-weight: 700;
-        letter-spacing: .24em;
+        letter-spacing: .28em;
       }
 
       #names .close {
-        font-size: 14.5px;
+        font-size: 11.5px;
         font-weight: 600;
         line-height: 1.4;
       }
 
       #std .where {
-        font-size: 16.5px;
-        font-weight: 500;
-        letter-spacing: .12em;
-        line-height: 1.7;
-      }
-
-      #std .dates .m,
-      #std .dates .y {
-        font-size: 15px;
+        font-size: 11px;
         font-weight: 600;
-      }
-
-      .eyebrow,
-      #venue .eyebrow {
-        font-size: 13.5px;
-        font-weight: 700;
         letter-spacing: .22em;
       }
 
-      .day .head h2 {
-        font-size: 21px;
+      .card p {
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 1.45;
+      }
+
+      .card .time {
+        font-size: 20px;
+        font-weight: 700;
+      }
+
+      #venue p {
+        font-size: 14.5px;
         font-weight: 600;
       }
 
       .day .head p {
-        font-size: 17px;
-        font-weight: 600;
-        line-height: 1.5;
-      }
-
-      .card .idx {
-        font-size: 14px;
-        font-weight: 600;
-      }
-
-      .card h3 {
-        font-size: 24.5px;
-        font-weight: 600;
-        letter-spacing: .12em;
-      }
-
-      .card p {
-        font-size: 17.5px;
-        font-weight: 600;
-        line-height: 1.5;
-      }
-
-      .card .time {
-        font-size: 24px;
-        font-weight: 700;
-      }
-
-      #family-note .msg-quote {
-        font-size: 19.5px;
-        font-weight: 600;
-        line-height: 1.5;
-      }
-
-      #family-note .sign-tag {
-        font-size: 25px;
-      }
-
-      #family-note .fam-name {
-        font-size: 19.5px;
-        letter-spacing: .14em;
-      }
-
-      #venue p {
-        font-size: 18px;
-        font-weight: 600;
-      }
-
-      .btn {
-        font-size: 14.5px;
-        letter-spacing: .2em;
-        font-weight: 600;
-      }
-
-      footer {
-        font-size: 13px;
-        letter-spacing: .3em;
-      }
-
-      #hint {
         font-size: 13.5px;
+        font-weight: 600;
+      }
+
+      #std .dates .m,
+      #std .dates .y {
+        font-size: 11px;
+        font-weight: 600;
+      }
+
+      #venue .eyebrow {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: .24em;
       }
     }
 
@@ -7594,21 +7470,6 @@
       </div>
     </section>
 
-    <!-- ================= 6.5 FAMILY MESSAGE ================= -->
-    <section id="family-note">
-      <div class="orn rise"><svg viewBox="0 0 60 24">
-          <use href="#orn" />
-        </svg></div>
-      <p class="msg-quote rise">We look forward to celebrating this special day with you.<br>Thank you.</p>
-      <div class="msg-sign rise">
-        <span class="sign-tag">With Warm Regards,</span>
-        <div class="fam-name">Karicheti Family</div>
-      </div>
-      <div class="orn end rise"><svg viewBox="0 0 60 24">
-          <use href="#orn" />
-        </svg></div>
-    </section>
-
     <!-- ================= 7. VENUE ================= -->
     <section id="venue">
       <div class="ring"></div>
@@ -7765,7 +7626,7 @@
       }));
 
       /* ---------- 7 + 8 + 9 reveals ---------- */
-      gsap.utils.toArray('#venue .rise, #rsvp .rise, #family-note .rise').forEach((el) => gsap.to(el, { opacity: 1, y: 0, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 96%', once: true } }));
+      gsap.utils.toArray('#venue .rise, #rsvp .rise').forEach((el) => gsap.to(el, { opacity: 1, y: 0, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 96%', once: true } }));
       gsap.to('#venue .ring', { rotate: 120, ease: 'none', scrollTrigger: { trigger: '#venue', start: 'top bottom', end: 'bottom top', scrub: 1 } });
       if (document.querySelector('#rsvp .rs')) gsap.from('#rsvp .rs span', { y: 60, opacity: 0, stagger: .08, ease: 'power3.out', scrollTrigger: { trigger: '#rsvp', start: 'top 70%', end: 'top 25%', scrub: .8 } });
 
