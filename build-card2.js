@@ -13,3 +13,11 @@ must('    <div class="spacer"></div>', '    <div class="spacer" style="height:6s
 fs.mkdirSync(path.join(__dirname, 'wedding'), { recursive: true });
 fs.writeFileSync(path.join(__dirname, 'wedding', 'index.html'), h);
 console.log('wedding/index.html written', h.length, 'bytes');
+
+['audio.mp3', 'music.mp3'].forEach(f => {
+  const src = path.join(__dirname, f);
+  if (fs.existsSync(src)) {
+    fs.copyFileSync(src, path.join(__dirname, 'wedding', f));
+    console.log('copied', f, 'to wedding/' + f);
+  }
+});

@@ -699,7 +699,7 @@
 
     #std .word.a,
     #std .word.c {
-      font-size: clamp(48px, 14.5vw, 64px)
+      font-size: clamp(40px, 14.5vw, 40px)
     }
 
     #std .word.a::first-letter,
@@ -725,7 +725,8 @@
 
     #std .dates .m {
       font-family: var(--sans);
-      font-size: 12px;
+      font-size: 14px;
+      font-weight: 500;
       letter-spacing: .34em;
       text-transform: uppercase
     }
@@ -745,18 +746,20 @@
 
     #std .dates .y {
       font-family: var(--sans);
-      font-size: 12px;
+      font-size: 14px;
+      font-weight: 500;
       letter-spacing: .34em
     }
 
     #std .where {
       font-family: var(--sans);
-      font-size: 12.5px;
-      letter-spacing: .24em;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: .18em;
       text-transform: uppercase;
       color: var(--ink);
-      line-height: 1.9;
-      margin-top: 14px
+      line-height: 1.8;
+      margin-top: 14px;
     }
 
     #std .orn.end {
@@ -837,7 +840,7 @@
     }
 
     .card h3 {
-      font-size: 21px;
+      font-size: 24px;
       letter-spacing: .14em;
       text-transform: uppercase;
       font-weight: 600;
@@ -848,13 +851,13 @@
       font-style: italic;
       font-weight: 500;
       color: var(--ink);
-      font-size: 15.5px;
+      font-size: 18px;
       line-height: 1.5;
       margin: 10px 0 14px
     }
 
     .card .time {
-      font-size: 24px;
+      font-size: 26px;
       font-weight: 600;
       color: var(--ink);
       letter-spacing: .02em
@@ -865,8 +868,8 @@
       top: 12px;
       left: 14px;
       font-family: var(--sans);
-      font-size: 11px;
-      font-weight: 500;
+      font-size: 14px;
+      font-weight: 600;
       letter-spacing: .3em;
       color: var(--gold-deep)
     }
@@ -925,6 +928,78 @@
 
     .stack .spacer {
       height: 8svh
+    }
+
+    /* =========================================================
+     6.5 FAMILY MESSAGE
+  ========================================================= */
+    #family-note {
+      background: var(--ivory);
+      padding: clamp(34px, 5.5vh, 52px) 24px clamp(44px, 7vh, 64px);
+      position: relative;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    #family-note .orn {
+      height: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      color: var(--gold);
+    }
+
+    #family-note .orn svg {
+      width: clamp(44px, 10vw, 56px);
+      height: 100%;
+    }
+
+    #family-note .msg-quote {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(19px, 4.8vw, 24px);
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.55;
+      margin: 0 auto 18px;
+      max-width: 480px;
+      letter-spacing: .01em;
+    }
+
+    #family-note .msg-sign {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      margin-bottom: 16px;
+    }
+
+    #family-note .sign-tag {
+      font-family: var(--script);
+      font-size: clamp(23px, 5.8vw, 29px);
+      font-weight: 600;
+      color: var(--gold-deep);
+      line-height: 1.15;
+    }
+
+    #family-note .fam-name {
+      font-family: var(--serif);
+      font-size: clamp(17px, 4.3vw, 21px);
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      margin-top: 3px;
+    }
+
+    #family-note .orn.end {
+      margin-top: 0;
+      margin-bottom: 0;
     }
 
     /* =========================================================
@@ -1263,94 +1338,232 @@
       margin-bottom: 6px;
     }
 
+    /* =========================================================
+     AUDIO CONTROLLER (Luxury Floating Glass Button)
+  ========================================================= */
+    .music-btn {
+      position: fixed;
+      bottom: clamp(18px, 3vh, 26px);
+      right: clamp(16px, 3vw, 24px);
+      z-index: 999;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: rgba(224, 212, 252, 0.82);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1.2px solid rgba(157, 142, 194, 0.7);
+      box-shadow: 0 6px 20px -3px rgba(46, 35, 80, 0.35), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      color: var(--gold-deep);
+      transition: transform .25s ease, background .25s ease, box-shadow .25s ease;
+      -webkit-tap-highlight-color: transparent;
+      outline: none;
+    }
+
+    .music-btn:hover {
+      transform: scale(1.08);
+      background: rgba(237, 229, 252, 0.95);
+      box-shadow: 0 8px 24px -2px rgba(46, 35, 80, 0.45);
+    }
+
+    .music-btn:active {
+      transform: scale(.95);
+    }
+
+    .music-btn .wave-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5px;
+      height: 18px;
+    }
+
+    .music-btn .bar {
+      width: 2.5px;
+      background: var(--gold-deep);
+      border-radius: 2px;
+      transform-origin: bottom;
+      height: 16px;
+      transform: scaleY(0.25);
+    }
+
+    .music-btn.playing .b1 {
+      animation: eqBar .8s ease-in-out infinite alternate;
+    }
+
+    .music-btn.playing .b2 {
+      animation: eqBar 1.1s ease-in-out .2s infinite alternate;
+    }
+
+    .music-btn.playing .b3 {
+      animation: eqBar .9s ease-in-out .4s infinite alternate;
+    }
+
+    .music-btn.playing .b4 {
+      animation: eqBar 1.2s ease-in-out .1s infinite alternate;
+    }
+
+    @keyframes eqBar {
+      0% { transform: scaleY(0.2); }
+      100% { transform: scaleY(1); }
+    }
+
+    .music-btn .mute-icon {
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .music-btn:not(.playing) .wave-icon {
+      display: none;
+    }
+
+    .music-btn:not(.playing) .mute-icon {
+      display: flex;
+    }
+
     @media (max-width: 480px) {
       #names .lead {
-        font-size: 13px;
+        font-size: 15.5px;
         font-weight: 600;
         line-height: 1.35;
       }
 
       #names .lead b {
-        font-size: 13.5px;
+        font-size: 16.5px;
         font-weight: 700;
       }
 
       #names .invited {
-        font-size: 9.5px;
+        font-size: 12.5px;
         font-weight: 700;
-        letter-spacing: .32em;
+        letter-spacing: .28em;
       }
 
       #names .par i {
-        font-size: 17px;
+        font-size: 20px;
         font-weight: 700;
       }
 
       #names .par b {
-        font-size: 12.5px;
+        font-size: 15.5px;
         font-weight: 700;
         letter-spacing: .04em;
       }
 
       #names .par span {
-        font-size: 15px;
+        font-size: 18px;
         font-weight: 700;
       }
 
       #names .with {
-        font-size: 18.5px;
+        font-size: 21.5px;
         font-weight: 700;
       }
 
       #names .married {
-        font-size: 9.5px;
+        font-size: 12.5px;
         font-weight: 700;
-        letter-spacing: .28em;
+        letter-spacing: .24em;
       }
 
       #names .close {
-        font-size: 11.5px;
+        font-size: 14.5px;
         font-weight: 600;
         line-height: 1.4;
       }
 
       #std .where {
-        font-size: 11px;
-        font-weight: 600;
-        letter-spacing: .22em;
-      }
-
-      .card p {
-        font-size: 14px;
-        font-weight: 600;
-        line-height: 1.45;
-      }
-
-      .card .time {
-        font-size: 20px;
-        font-weight: 700;
-      }
-
-      #venue p {
-        font-size: 14.5px;
-        font-weight: 600;
-      }
-
-      .day .head p {
-        font-size: 13.5px;
-        font-weight: 600;
+        font-size: 16.5px;
+        font-weight: 500;
+        letter-spacing: .12em;
+        line-height: 1.7;
       }
 
       #std .dates .m,
       #std .dates .y {
-        font-size: 11px;
+        font-size: 15px;
         font-weight: 600;
       }
 
+      .eyebrow,
       #venue .eyebrow {
-        font-size: 10px;
+        font-size: 13.5px;
         font-weight: 700;
-        letter-spacing: .24em;
+        letter-spacing: .22em;
+      }
+
+      .day .head h2 {
+        font-size: 21px;
+        font-weight: 600;
+      }
+
+      .day .head p {
+        font-size: 17px;
+        font-weight: 600;
+        line-height: 1.5;
+      }
+
+      .card .idx {
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .card h3 {
+        font-size: 24.5px;
+        font-weight: 600;
+        letter-spacing: .12em;
+      }
+
+      .card p {
+        font-size: 17.5px;
+        font-weight: 600;
+        line-height: 1.5;
+      }
+
+      .card .time {
+        font-size: 24px;
+        font-weight: 700;
+      }
+
+      #family-note .msg-quote {
+        font-size: 19.5px;
+        font-weight: 600;
+        line-height: 1.5;
+      }
+
+      #family-note .sign-tag {
+        font-size: 25px;
+      }
+
+      #family-note .fam-name {
+        font-size: 19.5px;
+        letter-spacing: .14em;
+      }
+
+      #venue p {
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      .btn {
+        font-size: 14.5px;
+        letter-spacing: .2em;
+        font-weight: 600;
+      }
+
+      footer {
+        font-size: 13px;
+        letter-spacing: .3em;
+      }
+
+      #hint {
+        font-size: 13.5px;
       }
     }
 
@@ -7470,6 +7683,21 @@
       </div>
     </section>
 
+    <!-- ================= 6.5 FAMILY MESSAGE ================= -->
+    <section id="family-note">
+      <div class="orn rise"><svg viewBox="0 0 60 24">
+          <use href="#orn" />
+        </svg></div>
+      <p class="msg-quote rise">We look forward to celebrating this special day with you.<br>Thank you.</p>
+      <div class="msg-sign rise">
+        <span class="sign-tag">With Warm Regards,</span>
+        <div class="fam-name">Karicheti Family</div>
+      </div>
+      <div class="orn end rise"><svg viewBox="0 0 60 24">
+          <use href="#orn" />
+        </svg></div>
+    </section>
+
     <!-- ================= 7. VENUE ================= -->
     <section id="venue">
       <div class="ring"></div>
@@ -7488,6 +7716,29 @@
 
 
   </div>
+
+  <!-- ================= AUDIO & CONTROLLER ================= -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="audio.mp3" type="audio/mpeg">
+    <source src="../audio.mp3" type="audio/mpeg">
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
+  <button id="musicToggle" class="music-btn" type="button" aria-label="Toggle background music">
+    <span class="music-icon wave-icon">
+      <span class="bar b1"></span>
+      <span class="bar b2"></span>
+      <span class="bar b3"></span>
+      <span class="bar b4"></span>
+    </span>
+    <span class="music-icon mute-icon">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+        <line x1="23" y1="9" x2="17" y2="15"></line>
+        <line x1="17" y1="9" x2="23" y2="15"></line>
+      </svg>
+    </span>
+  </button>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -7602,8 +7853,81 @@
         .from('#names .emb-frame', { scale: 1.05, opacity: 0, duration: .15 }, .75)
         .to('#names .rise', { opacity: 1, y: 0, stagger: .01, duration: .15, ease: 'power2.out' }, .72);
 
+      /* ---------- audio playback (smooth volume ramp & autoplay) ---------- */
+      const bgMusic = document.getElementById('bgMusic');
+      const musicBtn = document.getElementById('musicToggle');
+      let isPlaying = false;
+      let fadeTimer = null;
+
+      function fadeVolume(targetVol, duration, callback) {
+        if (!bgMusic) return;
+        clearInterval(fadeTimer);
+        const startVol = bgMusic.volume;
+        const diff = targetVol - startVol;
+        const steps = 20;
+        const stepTime = duration / steps;
+        let step = 0;
+        fadeTimer = setInterval(() => {
+          step++;
+          bgMusic.volume = Math.max(0, Math.min(1, startVol + (diff * (step / steps))));
+          if (step >= steps) {
+            clearInterval(fadeTimer);
+            if (callback) callback();
+          }
+        }, stepTime);
+      }
+
+      function startAudio() {
+        if (!bgMusic || isPlaying) return;
+        bgMusic.volume = 0;
+        const p = bgMusic.play();
+        if (p !== undefined) {
+          p.then(() => {
+            isPlaying = true;
+            if (musicBtn) musicBtn.classList.add('playing');
+            fadeVolume(0.7, 1400);
+          }).catch(() => {
+            isPlaying = false;
+            if (musicBtn) musicBtn.classList.remove('playing');
+          });
+        }
+      }
+
+      function stopAudio() {
+        if (!bgMusic || !isPlaying) return;
+        fadeVolume(0, 350, () => {
+          bgMusic.pause();
+          isPlaying = false;
+          if (musicBtn) musicBtn.classList.remove('playing');
+        });
+      }
+
+      if (musicBtn) {
+        musicBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (isPlaying) {
+            stopAudio();
+          } else {
+            startAudio();
+          }
+        });
+      }
+
+      let userUnlocked = false;
+      const unlockAudio = () => {
+        if (!userUnlocked) {
+          userUnlocked = true;
+          startAudio();
+          ['click', 'touchstart', 'scroll'].forEach(ev => window.removeEventListener(ev, unlockAudio));
+        }
+      };
+      ['click', 'touchstart', 'scroll'].forEach(ev => window.addEventListener(ev, unlockAudio, { passive: true }));
+
       const sealEl = document.getElementById('seal');
-      if (sealEl) sealEl.addEventListener('click', () => window.scrollBy({ top: window.innerHeight * 0.95, behavior: 'smooth' }));
+      if (sealEl) sealEl.addEventListener('click', () => {
+        unlockAudio();
+        window.scrollBy({ top: window.innerHeight * 0.95, behavior: 'smooth' });
+      });
 
       /* ---------- 4. save the date ---------- */
       const std = gsap.timeline({ scrollTrigger: { trigger: '#std', start: 'top top', end: '+=25%', scrub: .7, pin: true, anticipatePin: 1 } });
@@ -7626,7 +7950,7 @@
       }));
 
       /* ---------- 7 + 8 + 9 reveals ---------- */
-      gsap.utils.toArray('#venue .rise, #rsvp .rise').forEach((el) => gsap.to(el, { opacity: 1, y: 0, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 96%', once: true } }));
+      gsap.utils.toArray('#venue .rise, #rsvp .rise, #family-note .rise').forEach((el) => gsap.to(el, { opacity: 1, y: 0, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 96%', once: true } }));
       gsap.to('#venue .ring', { rotate: 120, ease: 'none', scrollTrigger: { trigger: '#venue', start: 'top bottom', end: 'bottom top', scrub: 1 } });
       if (document.querySelector('#rsvp .rs')) gsap.from('#rsvp .rs span', { y: 60, opacity: 0, stagger: .08, ease: 'power3.out', scrollTrigger: { trigger: '#rsvp', start: 'top 70%', end: 'top 25%', scrub: .8 } });
 
