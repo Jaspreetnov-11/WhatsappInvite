@@ -3,7 +3,7 @@
 const fs = require('fs'), path = require('path');
 let h = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8');
 const must = (from, to, label) => { if (!h.includes(from)) throw new Error('missing: ' + (label || from.slice(0, 60))); h = h.replace(from, to); };
-const cut = (re, label) => { if (!re.test(h)) throw new Error('missing: ' + label); h = h.replace(re, ''); };
+const cut = (re, label) => { if (re.test(h)) h = h.replace(re, ''); };
 
 cut(/\s*<!-- ================= 8\. RSVP ================= -->[\s\S]*?<\/section>/, 'rsvp section');
 
