@@ -7718,13 +7718,12 @@
   </div>
 
   <!-- ================= AUDIO & CONTROLLER ================= -->
-  <audio id="bgMusic" loop preload="auto">
+  <audio id="bgMusic" src="audio.mp3" loop preload="auto" playsinline webkit-playsinline>
     <source src="audio.mp3" type="audio/mpeg">
     <source src="../audio.mp3" type="audio/mpeg">
-    <source src="music.mp3" type="audio/mpeg">
   </audio>
 
-  <button id="musicToggle" class="music-btn" type="button" aria-label="Toggle background music">
+  <button id="musicToggle" class="music-btn playing" type="button" aria-label="Toggle background music">
     <span class="music-icon wave-icon">
       <span class="bar b1"></span>
       <span class="bar b2"></span>
@@ -7853,81 +7852,83 @@
         .from('#names .emb-frame', { scale: 1.05, opacity: 0, duration: .15 }, .75)
         .to('#names .rise', { opacity: 1, y: 0, stagger: .01, duration: .15, ease: 'power2.out' }, .72);
 
-      /* ---------- audio playback (smooth volume ramp & autoplay) ---------- */
+      /* ---------- audio playback (iPhone iOS Safari + Android + Desktop) ---------- */
       const bgMusic = document.getElementById('bgMusic');
       const musicBtn = document.getElementById('musicToggle');
       let isPlaying = false;
-      let fadeTimer = null;
+      let isUserPaused = false; // Default is ON!
 
-      function fadeVolume(targetVol, duration, callback) {
-        if (!bgMusic) return;
-        clearInterval(fadeTimer);
-        const startVol = bgMusic.volume;
-        const diff = targetVol - startVol;
-        const steps = 20;
-        const stepTime = duration / steps;
-        let step = 0;
-        fadeTimer = setInterval(() => {
-          step++;
-          bgMusic.volume = Math.max(0, Math.min(1, startVol + (diff * (step / steps))));
-          if (step >= steps) {
-            clearInterval(fadeTimer);
-            if (callback) callback();
+      function syncMusicUI(playing) {
+        isPlaying = playing;
+        if (musicBtn) {
+          if (playing) {
+            musicBtn.classList.add('playing');
+          } else {
+            musicBtn.classList.remove('playing');
           }
-        }, stepTime);
+        }
       }
 
-      function startAudio() {
-        if (!bgMusic || isPlaying) return;
-        bgMusic.volume = 0;
-        const p = bgMusic.play();
-        if (p !== undefined) {
-          p.then(() => {
-            isPlaying = true;
-            if (musicBtn) musicBtn.classList.add('playing');
-            fadeVolume(0.7, 1400);
+      function attemptPlay() {
+        if (!bgMusic || isUserPaused) return;
+        try {
+          bgMusic.volume = 0.85;
+        } catch (_) {}
+        const promise = bgMusic.play();
+        if (promise !== undefined) {
+          promise.then(() => {
+            syncMusicUI(true);
           }).catch(() => {
-            isPlaying = false;
-            if (musicBtn) musicBtn.classList.remove('playing');
+            // Autoplay restricted until direct gesture
+            syncMusicUI(false);
           });
         }
       }
 
-      function stopAudio() {
-        if (!bgMusic || !isPlaying) return;
-        fadeVolume(0, 350, () => {
+      function userToggleMusic() {
+        if (!bgMusic) return;
+        if (isPlaying && !bgMusic.paused) {
+          isUserPaused = true;
           bgMusic.pause();
-          isPlaying = false;
-          if (musicBtn) musicBtn.classList.remove('playing');
-        });
+          syncMusicUI(false);
+        } else {
+          isUserPaused = false;
+          attemptPlay();
+        }
       }
 
       if (musicBtn) {
         musicBtn.addEventListener('click', (e) => {
           e.stopPropagation();
-          if (isPlaying) {
-            stopAudio();
-          } else {
-            startAudio();
-          }
+          userToggleMusic();
         });
       }
 
-      let userUnlocked = false;
-      const unlockAudio = () => {
-        if (!userUnlocked) {
-          userUnlocked = true;
-          startAudio();
-          ['click', 'touchstart', 'scroll'].forEach(ev => window.removeEventListener(ev, unlockAudio));
+      // Try autoplay on page load
+      attemptPlay();
+
+      // iOS WebKit & Mobile gesture unlock: MUST be synchronous in touch/click capture phase
+      const gestureUnlock = () => {
+        if (!isUserPaused && (!isPlaying || (bgMusic && bgMusic.paused))) {
+          attemptPlay();
         }
+        ['touchstart', 'touchend', 'pointerdown', 'click'].forEach(evt => {
+          document.removeEventListener(evt, gestureUnlock, true);
+          window.removeEventListener(evt, gestureUnlock, true);
+        });
       };
-      ['click', 'touchstart', 'scroll'].forEach(ev => window.addEventListener(ev, unlockAudio, { passive: true }));
+      ['touchstart', 'touchend', 'pointerdown', 'click'].forEach(evt => {
+        document.addEventListener(evt, gestureUnlock, { capture: true, passive: true });
+        window.addEventListener(evt, gestureUnlock, { capture: true, passive: true });
+      });
 
       const sealEl = document.getElementById('seal');
-      if (sealEl) sealEl.addEventListener('click', () => {
-        unlockAudio();
-        window.scrollBy({ top: window.innerHeight * 0.95, behavior: 'smooth' });
-      });
+      if (sealEl) {
+        sealEl.addEventListener('click', () => {
+          gestureUnlock();
+          window.scrollBy({ top: window.innerHeight * 0.95, behavior: 'smooth' });
+        });
+      }
 
       /* ---------- 4. save the date ---------- */
       const std = gsap.timeline({ scrollTrigger: { trigger: '#std', start: 'top top', end: '+=25%', scrub: .7, pin: true, anticipatePin: 1 } });
