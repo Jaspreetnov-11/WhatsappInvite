@@ -699,7 +699,7 @@
 
     #std .word.a,
     #std .word.c {
-      font-size: clamp(48px, 14.5vw, 64px)
+      font-size: clamp(40px, 14.5vw, 40px)
     }
 
     #std .word.a::first-letter,
@@ -725,7 +725,8 @@
 
     #std .dates .m {
       font-family: var(--sans);
-      font-size: 12px;
+      font-size: 14px;
+      font-weight: 500;
       letter-spacing: .34em;
       text-transform: uppercase
     }
@@ -745,18 +746,20 @@
 
     #std .dates .y {
       font-family: var(--sans);
-      font-size: 12px;
+      font-size: 14px;
+      font-weight: 500;
       letter-spacing: .34em
     }
 
     #std .where {
       font-family: var(--sans);
-      font-size: 12.5px;
-      letter-spacing: .24em;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: .18em;
       text-transform: uppercase;
       color: var(--ink);
-      line-height: 1.9;
-      margin-top: 14px
+      line-height: 1.8;
+      margin-top: 14px;
     }
 
     #std .orn.end {
@@ -925,6 +928,78 @@
 
     .stack .spacer {
       height: 8svh
+    }
+
+    /* =========================================================
+     6.5 FAMILY MESSAGE
+  ========================================================= */
+    #family-note {
+      background: var(--ivory);
+      padding: clamp(34px, 5.5vh, 52px) 24px clamp(44px, 7vh, 64px);
+      position: relative;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    #family-note .orn {
+      height: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      color: var(--gold);
+    }
+
+    #family-note .orn svg {
+      width: clamp(44px, 10vw, 56px);
+      height: 100%;
+    }
+
+    #family-note .msg-quote {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(19px, 4.8vw, 24px);
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.55;
+      margin: 0 auto 18px;
+      max-width: 480px;
+      letter-spacing: .01em;
+    }
+
+    #family-note .msg-sign {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      margin-bottom: 16px;
+    }
+
+    #family-note .sign-tag {
+      font-family: var(--script);
+      font-size: clamp(23px, 5.8vw, 29px);
+      font-weight: 600;
+      color: var(--gold-deep);
+      line-height: 1.15;
+    }
+
+    #family-note .fam-name {
+      font-family: var(--serif);
+      font-size: clamp(17px, 4.3vw, 21px);
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      margin-top: 3px;
+    }
+
+    #family-note .orn.end {
+      margin-top: 0;
+      margin-bottom: 0;
     }
 
     /* =========================================================
@@ -1315,9 +1390,9 @@
       }
 
       #std .where {
-        font-size: 11px;
-        font-weight: 600;
-        letter-spacing: .22em;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: .16em;
       }
 
       .card p {
@@ -1343,14 +1418,29 @@
 
       #std .dates .m,
       #std .dates .y {
-        font-size: 11px;
-        font-weight: 600;
+        font-size: 12px;
+        font-weight: 500;
       }
 
       #venue .eyebrow {
         font-size: 10px;
         font-weight: 700;
         letter-spacing: .24em;
+      }
+
+      #family-note .msg-quote {
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 1.5;
+      }
+
+      #family-note .sign-tag {
+        font-size: 22px;
+      }
+
+      #family-note .fam-name {
+        font-size: 16px;
+        letter-spacing: .12em;
       }
     }
 
@@ -7470,6 +7560,21 @@
       </div>
     </section>
 
+    <!-- ================= 6.5 FAMILY MESSAGE ================= -->
+    <section id="family-note">
+      <div class="orn rise"><svg viewBox="0 0 60 24">
+          <use href="#orn" />
+        </svg></div>
+      <p class="msg-quote rise">“We look forward to celebrating this special day with you.<br>Thank you.”</p>
+      <div class="msg-sign rise">
+        <span class="sign-tag">With Warm Regards,</span>
+        <div class="fam-name">Karicheti Family</div>
+      </div>
+      <div class="orn end rise"><svg viewBox="0 0 60 24">
+          <use href="#orn" />
+        </svg></div>
+    </section>
+
     <!-- ================= 7. VENUE ================= -->
     <section id="venue">
       <div class="ring"></div>
@@ -7626,7 +7731,7 @@
       }));
 
       /* ---------- 7 + 8 + 9 reveals ---------- */
-      gsap.utils.toArray('#venue .rise, #rsvp .rise').forEach((el) => gsap.to(el, { opacity: 1, y: 0, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 96%', once: true } }));
+      gsap.utils.toArray('#venue .rise, #rsvp .rise, #family-note .rise').forEach((el) => gsap.to(el, { opacity: 1, y: 0, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 96%', once: true } }));
       gsap.to('#venue .ring', { rotate: 120, ease: 'none', scrollTrigger: { trigger: '#venue', start: 'top bottom', end: 'bottom top', scrub: 1 } });
       if (document.querySelector('#rsvp .rs')) gsap.from('#rsvp .rs span', { y: 60, opacity: 0, stagger: .08, ease: 'power3.out', scrollTrigger: { trigger: '#rsvp', start: 'top 70%', end: 'top 25%', scrub: .8 } });
 
